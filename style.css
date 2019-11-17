@@ -1,43 +1,58 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
 body {
     padding: 0;
-    margin: 0;
+    margin: 0 auto;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: 'Google sans';
     font-weight: bold;
-    background: rgba(237, 240, 242, 0.466);
+    background: rgb(237, 240, 242);
+    max-width: 900px;
 }
 
 main {
-    display: flex;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(9, 1fr);
+    height: 75%;
+    background: rgb(255, 255, 255);
+    border-radius: 8px;
 }
 
 .wrapper {
-    background: rgb(255, 255, 255);
-    border-radius: 8px;
+    grid-column: 1/5;
+    grid-row: 1/-1;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 0 36px rgba(0, 0, 0, 0.1);
     padding: 40px;
-
+    border-right: 5px solid rgb(237, 240, 242);
+    ;
 }
 
 ul,
 li {
     padding: 0;
     margin: 0;
+    width: 100%;
 }
 
 li {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 300px;
-    padding: 10px;
-    padding: 0;
 }
 
 .progressWrap {
@@ -66,10 +81,36 @@ p:first-letter {
     text-transform: capitalize;
 }
 
-#canvas {
+#canvasWrapper {
+    grid-column: 4/6;
+    grid-row: 1/-1;
+    align-self: center;
+    justify-self: center;
+    order: 1;
+}
 
-    box-shadow: 0 0 36px rgba(0, 0, 0, 0.1);
+#canvasWrapper #canvas {
+    cursor: pointer;
+    /* box-shadow: 0 0 36px rgba(0, 0, 0, 0.1); */
     border-radius: 50%;
+    transition: all .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 5px solid rgb(237, 240, 242);
+    ;
+}
 
+#canvas:hover {
+    transform: scale(1.1);
+}
 
+#canvas:active {
+    transform: scale(1);
+}
+
+footer {
+    grid-column: 5/-1;
+    grid-row: 1/-1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
 }
