@@ -1,8 +1,9 @@
 // https://teachablemachine.withgoogle.com/models/wVsOuK6L/
 // https://teachablemachine.withgoogle.com/models/e86UM4Hu/
+
 // Global variable to store the classifier
-let micro;
 let classifier;
+let micro;
 
 // Label
 let label = "listening...";
@@ -17,9 +18,13 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(50, 50);
+  let canvas = createCanvas(50, 50);
+  canvas.id("canvas");
+  canvas.parent("canvasWrapper");
+
   micro = new p5.AudioIn();
   micro.start();
+  //   micro.stop();
 
   // Start classifying
   // The sound model will continuously listen to the microphone
@@ -29,20 +34,15 @@ function setup() {
 function draw() {
   let vol = micro.getLevel();
   background(255);
-  stroke(255);
+  noStroke();
   fill("tomato");
   ellipse(25, 25, 20 + vol * 300, 20 + vol * 300);
-  //   console.log(vol);
-  //   // Draw the label in the canvas
-  //   fill(255);
-  //   textSize(32);
-  //   textAlign(CENTER, CENTER);
-  //   text(label, width / 2, height / 2);
 }
 
 // The model recognizing a sound will trigger this event
 function gotResult(error, results) {
   const elem = document.querySelector(".wrapper");
+  console.log(elem);
   if (error) {
     console.error(error);
     return;
