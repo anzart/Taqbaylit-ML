@@ -5,7 +5,7 @@
 // Initialize a sound classifier method with "soundModel" variable model. A callback needs to be passed.
 let classifier;
 // Options for the "soundModel" variable model, the default probabilityThreshold is 0
-const options = { probabilityThreshold: 0.7 };
+const options = { probabilityThreshold: 0.6 };
 
 let mic;
 let label = "listening...";
@@ -39,13 +39,23 @@ function draw() {
   background(255);
   noStroke();
   fill("tomato");
-  ellipse(25, 25, 20 + vol * 300, 20 + vol * 300);
+  ellipse(25, 25, 20 + vol * 600, 20 + vol * 600);
 }
 
 // A function to run when we get any errors and the results
 // The model recognizing a sound will trigger this event
 function gotResult(error, results) {
   const elem = document.querySelector(".wrapper");
+  const dictionary = document.querySelector(".dictionary");
+  const dictWords = [
+    { label: "amcic", emoji: "🐱", fr: "chat", en: "cat" },
+    { label: "izem", emoji: "🦁", fr: "lion", en: "lion" },
+    { label: "iddew", emoji: "🐵", fr: "singe", en: "monkey" },
+    { label: "aqjun", emoji: "🐶", fr: "chien", en: "dog" },
+    { label: "azul", emoji: "👋", fr: "salut", en: "hi" },
+    { label: "aḥelluf", emoji: "🐷", fr: "cochon", en: "pig" },
+    { label: "aɣyul", emoji: "🐴", fr: "âne", en: "donkey" }
+  ];
 
   // Display error in the console
   if (error) {
@@ -74,20 +84,21 @@ function gotResult(error, results) {
           <p class="text" style="color:${color()}">${result.label}</p>
           <div class="progressWrap" style="background:${color(0.05)}">
               <div class="progress" style="background:${color()};width:${confidence}%">
-                  ${confidence < 5 ? "" : confidence + "%"}
+                  ${confidence < 13 ? "" : confidence + "%"}
               </div>
           </div>
         </li>
         `;
     })
     .join("");
+  const text = dictWords.filter(el => el.label == results[0].label);
   elem.innerHTML = `<ul>${dom}</ul>`;
+  dictionary.innerHTML = `<div>
+  <p>${text[0].label}</p>
+  <p>
+  ${text[0].emoji}
+  </p>
+  <p>${text[0].fr}</p>
+  <p>${text[0].en}</p>
+</div>`;
 }
-
-// 🐱  amcic : Chat, Cat
-// 🦁  izem : Lion, Lion
-// 🐵  iddew : Singe, Monkey
-// 🐶  aqjun: Chien, Dog
-// 👋  Azul : Bonjour, Hello
-// 🐴  Aɣyul : âne, Donkey
-// 🐷  Aḥelluf : Pig, Cochon
