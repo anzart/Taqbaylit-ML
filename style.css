@@ -1,3 +1,14 @@
+:root {
+    --borderColor: rgb(238, 238, 238);
+    --borderSize: 2px;
+    --boxShadow: var(--borderSize) 0 0 0 var(--borderColor),
+        0 var(--borderSize) 0 0 var(--borderColor),
+        var(--borderSize) var(--borderSize) 0 0 var(--borderColor),
+        var(--borderSize) 0 0 0 var(--borderColor) inset,
+        0 var(--borderSize) 0 0 var(--borderColor) inset;
+}
+
+
 html {
     box-sizing: border-box;
 }
@@ -69,7 +80,7 @@ li {
     justify-content: flex-end;
     align-items: center;
     height: 100%;
-    font-size: 12px;
+    font-size: 10px;
     border-radius: 3px;
     background: rgb(2, 155, 243);
     color: white;
@@ -91,11 +102,9 @@ p:first-letter {
 
 #canvasWrapper #canvas {
     cursor: pointer;
-    /* box-shadow: 0 0 36px rgba(0, 0, 0, 0.1); */
+    transition: all .3s cubic-bezier(0.215, 0.610, 0.355, 1);
     border-radius: 50%;
-    transition: all .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     border: 5px solid rgb(237, 240, 242);
-    ;
 }
 
 #canvas:hover {
@@ -112,5 +121,37 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 40px;
+    padding: 0 60px;
+}
+
+footer div {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+footer div>* {
+    margin: 0;
+    text-align: center;
+    padding: 10px;
+    /* BORDER collapse */
+    box-shadow: var(--boxShadow);
+    z-index: 0;
+}
+
+footer div p:first-child {
+    width: 100%;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    color: rgb(76, 175, 80);
+}
+
+footer div p:nth-child(2) {
+    font-size: 5em;
+    width: 100%;
+}
+
+footer p:nth-child(3),
+footer p:nth-child(4) {
+    flex-grow: 1;
+    color: rgb(95, 95, 95);
 }
