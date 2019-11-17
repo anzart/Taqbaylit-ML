@@ -10,6 +10,10 @@ body {
     background: rgba(237, 240, 242, 0.466);
 }
 
+main {
+    display: flex;
+}
+
 .wrapper {
     background: rgb(255, 255, 255);
     border-radius: 8px;
@@ -17,7 +21,7 @@ body {
     justify-content: center;
     align-items: center;
     box-shadow: 0 0 36px rgba(0, 0, 0, 0.1);
-    padding: 40px 40px 60px 40px;
+    padding: 40px;
 
 }
 
@@ -62,9 +66,8 @@ p:first-letter {
     text-transform: capitalize;
 }
 
-canvas {
-    position: fixed;
-    bottom: 50px;
+#canvas {
+
     box-shadow: 0 0 36px rgba(0, 0, 0, 0.1);
     border-radius: 50%;
 
