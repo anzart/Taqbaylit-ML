@@ -1,18 +1,18 @@
-// https://teachablemachine.withgoogle.com/models/wVsOuK6L/
-// https://teachablemachine.withgoogle.com/models/e86UM4Hu/
+// https://teachablemachine.withgoogle.com/models/e86UM4Hu/ 1sx30 = 30 inputs for each word.
+// https://teachablemachine.withgoogle.com/models/wAixD7Pn/ 15sx3 = 60 inputs for each word.
 
 // Global variables:
 // Initialize a sound classifier method with "soundModel" variable model. A callback needs to be passed.
 let classifier;
 // Options for the "soundModel" variable model, the default probabilityThreshold is 0
-const options = { probabilityThreshold: 0.6 };
+const options = { probabilityThreshold: 0.7 };
 
 let mic;
 let label = "listening...";
 
 // Teachable Machine model URL:
 let soundModel =
-  "https://teachablemachine.withgoogle.com/models/e86UM4Hu/model.json";
+  "https://teachablemachine.withgoogle.com/models/wAixD7Pn/model.json";
 
 function preload() {
   // Load the model
